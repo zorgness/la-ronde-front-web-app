@@ -12,8 +12,8 @@ import {
   USER_PROFILE_REQUEST,
   USER_PROFILE_ERROR
  } from "../constants";
-import { fetchDataWithMethod } from "../../Api/fetchDataWithMethod";
-import { fetchData } from "../../Api/fecthData";
+import { fetchDataWithMethod } from "../../Api/fecthDataWithMethod";
+import { fetchData } from "../../Api/fetchData";
 
 const urlMain = process.env.REACT_APP_URL_MAIN
 const userLoginUrl = `${urlMain}/api/login`

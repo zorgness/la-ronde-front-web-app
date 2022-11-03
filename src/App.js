@@ -10,8 +10,10 @@ import Navigation from './components/Navigation';
 import Home from './components/Home'
 import Login from './components/authComponents/Login';
 import Register from './components/authComponents/Register';
+import { connect } from 'react-redux'
+import { userProfileFetch, userSetId, userLogout } from '../src/redux/actions/actions'
 
-function App() {
+const  App = ({authData, logout, setId, fetchProfile}) =>  {
   return (
     <div className="App">
 
@@ -35,4 +37,20 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    authData: state.auth
+  }
+};
+
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setId: userId => dispatch(userSetId(userId)),
+    fetchProfile: userId => dispatch(userProfileFetch(userId)),
+    logout: () => dispatch(userLogout())
+  }
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
