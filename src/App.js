@@ -8,11 +8,12 @@ import {
 } from "react-router-dom";
 import ScrollToTop from './utils/ScrollToTop'
 import Navigation from './components/Navigation';
-import Home from './components/Home'
+import Home from './components/Home';
 import Login from './components/authComponents/Login';
+import Dashboard from './components/userComponents/Dashboard';
 import RegisterContainer from './components/authComponents/RegisterContainer';
-import { connect } from 'react-redux'
-import { userProfileFetch, userSetId, userLogout } from '../src/redux/actions/actions'
+import { connect } from 'react-redux';
+import { userProfileFetch, userSetId, userLogout } from '../src/redux/actions/actions';
 
 const  App = ({authData, logout, setId, fetchProfile}) =>  {
 
@@ -44,6 +45,8 @@ const  App = ({authData, logout, setId, fetchProfile}) =>  {
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<RegisterContainer />} />
+
+            <Route path='/dashboard' element={<Dashboard authData={authData}  />} />
 
           </Routes>
         </ScrollToTop>

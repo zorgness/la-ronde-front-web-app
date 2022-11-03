@@ -140,7 +140,7 @@ export const userProfileReceived = (userId, userData) => {
 export const userProfileFetch = (userId) => {
   return (dispatch) => {
     dispatch(userProfileRequest());
-    return fetchData(userProfileUrl + userId).then(
+    return fetchData(userProfileUrl + '/' + userId).then(
       response => {
         dispatch(userProfileReceived(userId, response))
       }

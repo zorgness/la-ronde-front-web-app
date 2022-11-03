@@ -17,7 +17,7 @@ const Navigation = ({authData, logout}) => {
     <Navbar bg="light" expand="lg">
 
       <Container fluid>
-        <Navbar.Brand href="#">LA RONDE</Navbar.Brand>
+        <Navbar.Brand href="/">LA RONDE</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
       </Container>
 
@@ -29,11 +29,12 @@ const Navigation = ({authData, logout}) => {
 
         {
           authData.isAuthenticated
-          ?  <Nav.Link className='mx-5' onClick={handleLogout}>Logout</Nav.Link>
-
-
+          ?
+            <Fragment>
+              <Nav.Link className='mx-5' onClick={handleLogout}>Logout</Nav.Link>
+              <Nav.Link href="/dashboard" className='mx-5'>Dashboard</Nav.Link>
+            </Fragment>
           :
-
             <Fragment>
               <Nav.Link href="/register" className='mx-5'>Register</Nav.Link>
               <Nav.Link href="/login" className='mx-5'>Login</Nav.Link>
