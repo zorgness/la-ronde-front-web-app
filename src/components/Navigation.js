@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
-const Navigation = () => {
+const Navigation = ({authData, logout}) => {
+
+  const handleLogout = () => {
+
+    logout()
+  };
 
   return (
 
@@ -21,8 +26,19 @@ const Navigation = () => {
 
         <Nav className="text-center" >
           <Nav.Link href="/" className='mx-5'>Acceuil</Nav.Link>
-          <Nav.Link href="/register" className='mx-5'>Register</Nav.Link>
-          <Nav.Link href="/login" className='mx-5'>Login</Nav.Link>
+
+        {
+          authData.isAuthenticated
+          ?  <Nav.Link className='mx-5' onClick={handleLogout}>Logout</Nav.Link>
+
+
+          :
+
+            <Fragment>
+              <Nav.Link href="/register" className='mx-5'>Register</Nav.Link>
+              <Nav.Link href="/login" className='mx-5'>Login</Nav.Link>
+            </Fragment>
+        }
 
           {/* <NavDropdown title="Link"  id="collasible-nav-dropdown">
             <NavDropdown.Item href="#action3" className='mx-5'>Action</NavDropdown.Item>

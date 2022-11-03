@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
@@ -14,10 +15,27 @@ import { connect } from 'react-redux'
 import { userProfileFetch, userSetId, userLogout } from '../src/redux/actions/actions'
 
 const  App = ({authData, logout, setId, fetchProfile}) =>  {
+
+  const userId = window.localStorage.getItem('userId');
+
+  useEffect(() => {
+
+    if (userId) {
+      setId(userId);
+    }
+  }, [userId, setId])
+
+  useEffect(() => {
+    if(userId) {
+      fetchProfile(userId)
+    }
+
+  }, [userId, fetchProfile]);
+
   return (
     <div className="App">
 
-    <Navigation />
+    <Navigation authData={authData} logout={logout}  />
 
     <BrowserRouter>
         <ScrollToTop >

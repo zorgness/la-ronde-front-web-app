@@ -15,7 +15,7 @@ const RegisterContainer = ({registerData, complete}) => {
     if(registrationSuccess) {
       setInterval(
         () => {
-          console.log(counter);
+
           setCounter(counter - 1);
         },
         1000
@@ -23,10 +23,11 @@ const RegisterContainer = ({registerData, complete}) => {
     }
 
     if(counter < 0) {
+      complete()
       navigate('/')
     }
 
-  }, [counter, registrationSuccess, confirmationSuccess])
+  }, [counter, registrationSuccess, confirmationSuccess, navigate, complete])
 
   if (!registrationSuccess) {
     return <Register/>
