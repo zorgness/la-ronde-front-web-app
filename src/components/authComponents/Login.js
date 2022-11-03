@@ -9,7 +9,6 @@ import { userLoginAttempt, closeModal} from '../../redux/actions/actions';
 
 const Login = ({authData, auth, closeModal}) => {
 
-  console.log(authData)
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

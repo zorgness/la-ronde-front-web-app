@@ -17,7 +17,7 @@ import { fetchData } from "../../Api/fetchData";
 
 const urlMain = process.env.REACT_APP_URL_MAIN
 const userLoginUrl = `${urlMain}/api/login`
-const userProfileUrl = `${urlMain}/api/users/`
+const userProfileUrl = `${urlMain}/api/users`
 
 export const userRegisterSuccess = () => {
   return {
@@ -37,7 +37,7 @@ export const userRegisterComplete = () => {
   }
 };
 
-export const userRegister = (options) => {
+export const userRegister = options => {
   return (dispatch) => {
     return fetchDataWithMethod(userProfileUrl , 'POST' ,options)
       .then(() => dispatch(userRegisterSuccess()))
@@ -93,6 +93,7 @@ export const closeModal = () => {
 export const userLoginAttempt = (options) => {
   return (dispatch) => {
     return fetchDataWithMethod( userLoginUrl, 'POST', options).then(res => {
+      console.log(res)
       dispatch(userLoginSuccess(res.token, res.id), openModal())
     }).catch(err => {
       dispatch(userLoginError(err.message))
