@@ -3,10 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import { connect } from 'react-redux'
-import { registerSubmitReducer, initialReducerValue } from './registerSubmitReducer';
-import { userRegister, userRegisterComplete } from '../../redux/actions/actions'
+import { registerSubmitReducer, initialReducerValue } from '../../redux/reducers/registerSubmitReducer';
+import { userRegister } from '../../redux/actions/actions'
 
-const Register = ({registerData, register }) => {
+const Register = ({register}) => {
 
   const [state, dispatch] = useReducer(registerSubmitReducer, initialReducerValue);
 
@@ -16,11 +16,7 @@ const Register = ({registerData, register }) => {
     e.preventDefault();
     if (password !== verification) return
 
-
-
-    register(state)
-
-    console.log(registerData)
+      register(state)
   }
 
   return (
@@ -167,15 +163,10 @@ const Register = ({registerData, register }) => {
   )
 }
 
-const mapStateToProps = state => ({
-  registerData: state.registration
-});
-
 const mapDispatchToProps = dispatch => {
   return {
-    register: options => dispatch(userRegister(options)),
-    Complete: () => dispatch(userRegisterComplete())
+    register: options => dispatch(userRegister(options))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register)
+export default connect(null, mapDispatchToProps)(Register)

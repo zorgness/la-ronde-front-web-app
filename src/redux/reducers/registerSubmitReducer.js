@@ -20,6 +20,13 @@ export const registerSubmitReducer = (state, action) =>  {
       [action.name]: action.value
     };
   }
+  else if (action.type === "done") {
+    return {
+      ...state,
+      state: initialReducerValue
+
+    };
+  }
   // } else if (action.type === "submit") {
   //   return {
   //     ...state,

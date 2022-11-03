@@ -9,7 +9,7 @@ import ScrollToTop from './utils/ScrollToTop'
 import Navigation from './components/Navigation';
 import Home from './components/Home'
 import Login from './components/authComponents/Login';
-import Register from './components/authComponents/Register';
+import RegisterContainer from './components/authComponents/RegisterContainer';
 import { connect } from 'react-redux'
 import { userProfileFetch, userSetId, userLogout } from '../src/redux/actions/actions'
 
@@ -25,7 +25,7 @@ const  App = ({authData, logout, setId, fetchProfile}) =>  {
 
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
+            <Route path='/register' element={<RegisterContainer />} />
 
           </Routes>
         </ScrollToTop>
