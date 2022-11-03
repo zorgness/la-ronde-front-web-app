@@ -6,6 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import ScrollToTop from './utils/ScrollToTop'
+import Navigation from './components/Navigation';
 import Home from './components/Home'
 import Login from './components/authComponents/Login';
 import Register from './components/authComponents/Register';
@@ -13,6 +14,8 @@ import Register from './components/authComponents/Register';
 function App() {
   return (
     <div className="App">
+
+    <Navigation />
 
     <BrowserRouter>
         <ScrollToTop >
