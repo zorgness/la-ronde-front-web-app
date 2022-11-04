@@ -93,7 +93,6 @@ export const closeModal = () => {
 export const userLoginAttempt = (options) => {
   return (dispatch) => {
     return fetchDataWithMethod( userLoginUrl, 'POST', options).then(res => {
-      console.log(res)
       dispatch(userLoginSuccess(res.token, res.id), openModal())
     }).catch(err => {
       dispatch(userLoginError(err.message))

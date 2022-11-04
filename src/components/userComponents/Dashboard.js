@@ -1,70 +1,31 @@
-import React, {useEffect} from 'react'
-import { connect } from 'react-redux';
-import { userProfileFetch, userSetId } from '../../redux/actions/actions';
+import React from 'react'
+import Avatar from '../../images/user-avatar.png'
 
-const Dashboard = ({authData, fetchProfile, setId}) => {
+const Dashboard = () => {
 
-  const userId = window.localStorage.getItem('userId');
+  const userData = JSON.parse(localStorage.getItem('userData'));
 
-  // console.log(authData.userData)
 
-  // useEffect(() => {
-
-  //   if (userId) {
-  //     setId(userId);
-  //   }
-  // }, [userId, setId])
-
-  // useEffect(() => {
-  //   if(userId) {
-  //     fetchProfile(userId)
-  //   }
-
-  // }, [userId, fetchProfile]);
-
+  const {username} = userData
 
   return (
-    <div>Dashboard</div>
+    <div>
+        <div className="card-category" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.sight-o.io/wp-content/uploads/2020/09/AdobeStock_2025924791-min.jpeg)`}}>
+            <div className="d-flex flex-column">
+
+              <div className='mb-4'>
+                <img src={Avatar} alt="user-avatar" className='avatar-large' />
+              </div>
+
+              {username}
+
+            </div>
+        </div>
+
+    </div>
   )
 
-  // const {email, username, city} = authData?.userData;
-
-  // return (
-  //   <div>
-
-  //   {
-
-
-  //         <div>
-
-  //         <h2>{email}</h2>
-
-  //         <h2>{username}</h2>
-
-  //         <p>{city}</p>
-
-  //         </div>
-
-
-  //     }
-
-  //   </div>
-  // )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    authData: state.auth
-  }
-};
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setId: userId => dispatch(userSetId(userId)),
-    fetchProfile: userId => dispatch(userProfileFetch(userId))
-
-  }
-};
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+export default Dashboard

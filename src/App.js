@@ -12,6 +12,7 @@ import Home from './components/Home';
 import Login from './components/authComponents/Login';
 import Dashboard from './components/userComponents/Dashboard';
 import RegisterContainer from './components/authComponents/RegisterContainer';
+import RequireAuth from './components/authComponents/RequireAuth';
 import { connect } from 'react-redux';
 import { userProfileFetch, userSetId, userLogout } from '../src/redux/actions/actions';
 
@@ -23,15 +24,25 @@ const  App = ({authData, logout, setId, fetchProfile}) =>  {
 
     if (userId) {
       setId(userId);
-    }
-  }, [userId, setId])
-
-  useEffect(() => {
-    if(userId) {
       fetchProfile(userId)
     }
+  }, [userId, setId, fetchProfile]);
 
-  }, [userId, fetchProfile]);
+  // useEffect(() => {
+  //   if(userId) {
+  //     fetchProfile(userId)
+
+  //     if(!localStorage.getItem('user')) {
+  //   return(() => {
+
+  //       localStorage.setItem('user', JSON.stringify(authData.userData));
+
+  //   })
+  // }
+
+  //   }
+
+  // }, [userId, fetchProfile]);
 
   return (
     <div className="App">
@@ -46,7 +57,9 @@ const  App = ({authData, logout, setId, fetchProfile}) =>  {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<RegisterContainer />} />
 
-            <Route path='/dashboard' element={<Dashboard authData={authData}  />} />
+            <Route element={<RequireAuth />}>
+              <Route path='/dashboard' element={<Dashboard  />} />
+            </Route>
 
           </Routes>
         </ScrollToTop>

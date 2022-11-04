@@ -10,6 +10,7 @@ const Navigation = ({authData, logout}) => {
   const handleLogout = () => {
 
     logout()
+    localStorage.removeItem('user');
   };
 
   return (
