@@ -11,6 +11,7 @@ import Navigation from './components/Navigation';
 import Home from './components/Home';
 import Login from './components/authComponents/Login';
 import Dashboard from './components/userComponents/Dashboard';
+import UserSetListForm from './components/userComponents/UserSetListForm'
 import RegisterContainer from './components/authComponents/RegisterContainer';
 import RequireAuth from './components/authComponents/RequireAuth';
 import { connect } from 'react-redux';
@@ -28,21 +29,6 @@ const  App = ({authData, logout, setId, fetchProfile}) =>  {
     }
   }, [userId, setId, fetchProfile]);
 
-  // useEffect(() => {
-  //   if(userId) {
-  //     fetchProfile(userId)
-
-  //     if(!localStorage.getItem('user')) {
-  //   return(() => {
-
-  //       localStorage.setItem('user', JSON.stringify(authData.userData));
-
-  //   })
-  // }
-
-  //   }
-
-  // }, [userId, fetchProfile]);
 
   return (
     <div className="App">
@@ -55,10 +41,11 @@ const  App = ({authData, logout, setId, fetchProfile}) =>  {
 
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<RegisterContainer />} />
+            <Route path='/register' element={<RegisterContainer isEdit={false} />} />
 
             <Route element={<RequireAuth />}>
               <Route path='/dashboard' element={<Dashboard  />} />
+              <Route path='/newUserSetList' element={<UserSetListForm  />} />
             </Route>
 
           </Routes>

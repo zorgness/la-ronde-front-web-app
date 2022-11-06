@@ -1,5 +1,5 @@
 
-export const initialReducerValue = {
+export const initialRegisterValue = {
   loading: false,
   error: null,
   username: "",
@@ -13,20 +13,26 @@ export const initialReducerValue = {
 
 };
 
-export const registerSubmitReducer = (state, action) =>  {
+export const initialSetListValue = {
+  name: "",
+  theme: "",
+  city: ""
+}
+
+export const dataSubmitReducer = (state, action) =>  {
   if (action.type === "input") {
     return {
       ...state,
       [action.name]: action.value
     };
   }
-  else if (action.type === "done") {
-    return {
-      ...state,
-      state: initialReducerValue
+  // else if (action.type === "done") {
+  //   return {
+  //     ...state,
+  //     state: initialReducerValue
 
-    };
-  }
+  //   };
+  // }
   // } else if (action.type === "submit") {
   //   return {
   //     ...state,

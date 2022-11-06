@@ -29,7 +29,7 @@ const Login = ({authData, auth, closeModal}) => {
     setEmail('')
     setPassword('')
     closeModal()
-    navigate('/')
+    navigate('/dashboard')
 
   }
   return (

@@ -136,13 +136,24 @@ export const userProfileReceived = (userId, userData) => {
   }
 };
 
-export const userProfileFetch = (userId) => {
+export const userProfileFetch = userId => {
   return (dispatch) => {
     dispatch(userProfileRequest());
-    return fetchData(userProfileUrl + '/' + userId).then(
-      response => {
+    return fetchData(userProfileUrl + '/' + userId)
+    .then(response => {
         dispatch(userProfileReceived(userId, response))
       }
     ).catch(() => dispatch(userProfileError(userId)))
   }
 };
+
+export const userEditProfile = (userId, options) => {
+  return (dispatch) => {
+    return fetchDataWithMethod(userProfileUrl + '/' + userId, 'PUT', options)
+    .then(response => {
+      dispatch(userProfileReceived(userId, response))
+    }
+  ).catch(() => dispatch(userProfileError(userId)))
+
+  }
+}
