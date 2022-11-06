@@ -14,9 +14,15 @@ const Profile = ({userData, userInstrus}) => {
   return (
 
       <div>
+        <p className='text-end mx-3'>{userData.city}</p>
         <h3 className='text-start mx-5'>Mes Instruments</h3>
-        <Instrument instruments={userInstrus}/>
-        <UserStory userData={userData} />
+
+        <div>
+
+          <Instrument instruments={userInstrus}/>
+          <UserStory userData={userData} />
+
+        </div>
 
         {
           !userData.hasOwnProperty('description')

@@ -13,11 +13,9 @@ const Instrument = ({instruments}) => {
 
   return (
 
-    <div>
+    <div className='mx-4'>
 
-    <div className='container d-flex align-items-center'>
-
-      <ul className='list-group borderless'>
+      <ul className='list-group'>
         {
           instruments.map(({id, name}) => {
             return (
@@ -30,7 +28,7 @@ const Instrument = ({instruments}) => {
         }
       </ul>
     </div>
-    </div>
+
   )
 }
 

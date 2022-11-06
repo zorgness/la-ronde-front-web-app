@@ -16,6 +16,9 @@ import RegisterContainer from './components/authComponents/RegisterContainer';
 import RequireAuth from './components/authComponents/RequireAuth';
 import { connect } from 'react-redux';
 import { userProfileFetch, userSetId, userLogout } from '../src/redux/actions/actions';
+import SetListIndex from './components/SetListIndex';
+import SetListShow from './components/SetListShow';
+import SongForm from './components/userComponents/SongForm';
 
 const  App = ({authData, logout, setId, fetchProfile}) =>  {
 
@@ -40,12 +43,16 @@ const  App = ({authData, logout, setId, fetchProfile}) =>  {
           <Routes>
 
             <Route path='/' element={<Home />} />
+            <Route path="/set-list-index" element={<SetListIndex />} />
+            <Route path="/set-list/:id" element={<SetListShow authData={authData}   />} />
+
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<RegisterContainer isEdit={false} />} />
 
             <Route element={<RequireAuth />}>
               <Route path='/dashboard' element={<Dashboard  />} />
-              <Route path='/newUserSetList' element={<UserSetListForm  />} />
+              <Route path='/set-list-new' element={<UserSetListForm  />} />
+              <Route path='/song-new/:id' element={<SongForm  />} />
             </Route>
 
           </Routes>

@@ -19,6 +19,16 @@ export const initialSetListValue = {
   city: ""
 }
 
+export const initialSongValue = {
+  name: "",
+  creator: "",
+  interpret: "",
+  list: "",
+  link: "",
+  tone: "",
+  tempo: "",
+}
+
 export const dataSubmitReducer = (state, action) =>  {
   if (action.type === "input") {
     return {

@@ -8,9 +8,9 @@ import { userRegister, userEditProfile } from '../../redux/actions/actions'
 
 const Register = ({register, userData, editProfile, isEdit}) => {
 
-  const userId = localStorage.getItem('userId')
+  const userId = localStorage.getItem('userId');
 
-  const initialValue = isEdit ? userData : initialRegisterValue
+  const initialValue = isEdit ? userData : initialRegisterValue;
 
   const [state, dispatch] = useReducer(dataSubmitReducer, initialValue);
 
@@ -23,6 +23,7 @@ const Register = ({register, userData, editProfile, isEdit}) => {
 
       editProfile(userId, state)
       alert('Edit')
+
 
     } else {
 

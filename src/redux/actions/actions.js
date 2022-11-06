@@ -18,6 +18,8 @@ import { fetchData } from "../../Api/fetchData";
 const urlMain = process.env.REACT_APP_URL_MAIN
 const userLoginUrl = `${urlMain}/api/login`
 const userProfileUrl = `${urlMain}/api/users`
+const userSetList = `${urlMain}/api/set_lists`
+const urlSetListSong = `${urlMain}/api/songs`
 
 export const userRegisterSuccess = () => {
   return {
@@ -155,5 +157,24 @@ export const userEditProfile = (userId, options) => {
     }
   ).catch(() => dispatch(userProfileError(userId)))
 
+  }
+}
+
+export const userSetListNew = (userId, options) => {
+  return (dispatch) => {
+    return fetchDataWithMethod(userSetList, 'POST', options)
+    .then(response => {
+      dispatch(userProfileReceived(userId, response))
+    }
+  ).catch(() => dispatch(userProfileError(userId)))
+  }
+}
+
+export const setListNewSong = (options) => {
+  return (dispatch) => {
+    return fetchDataWithMethod(urlSetListSong, 'POST', options)
+    .then(res => {
+      console.log(res)
+    })
   }
 }

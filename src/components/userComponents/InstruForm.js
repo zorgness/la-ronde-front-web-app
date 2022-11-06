@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { instruments } from '../Data/instruments';
@@ -11,6 +11,8 @@ const InstruForm = ({userId, instruPresent}) => {
   const type = 'checkbox';
 
   const [userChoices, setUserChoices] = useState(({ selections: [] }))
+
+  const [isPres , setisPres] = useState([])
 
   const handleCheckBoxChange = (name) => {
 
@@ -45,39 +47,55 @@ const InstruForm = ({userId, instruPresent}) => {
 
   }
 
-    const isPresent = instru => {
-      const present = instruPresent.map(element => {
+
+  useEffect(() => {
+
+    const isPresent = () => {
+      const presents = instruPresent.map(element => {
         return element.name
       })
-      return present.includes(instru.name)
+      const list = instruments.map(instrument => {
+        return presents.includes(instrument.name)
+      })
+
+      setisPres(list)
     }
+
+
+    isPresent()
+
+
+  }, [instruPresent])
 
 
 
   return (
 
 
-    <Form className='d-flex justify-content-around flex-wrap w-50 gap-5' onSubmit={handleSubmit}>
-    {
-      instruments?.map((instru, index) => {
+    <Form  onSubmit={handleSubmit} className="text-center">
 
-        return (
+      <div className='d-flex justify-content-between flex-wrap gap-5 m-5' style={{maxWidth: '440px'}}>
+        {
+          instruments?.map((instru, index) => {
 
-          <Form.Check
-            key={index}
-            type={type}
-            id={instru.id}
-            value={instru.name}
-            label={instru.name}
-            defaultChecked={isPresent(instru)}
-            selected={userChoices.selections.includes(instru.name)}
-            onChange={() => handleCheckBoxChange(instru.name)}
-          />
+            return (
+
+              <Form.Check
+                key={index}
+                type={type}
+                id={instru.id}
+                value={instru.name}
+                label={instru.name}
+                defaultChecked={isPres[index]}
+                selected={userChoices.selections.includes(instru.name)}
+                onChange={() => handleCheckBoxChange(instru.name)}
+              />
 
 
-        )
-      })
-    }
+            )
+          })
+        }
+      </div>
 
     <Button type='submit' className='btn btn-primary' >
       Submit

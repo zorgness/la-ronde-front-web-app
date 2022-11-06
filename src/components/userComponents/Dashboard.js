@@ -29,7 +29,7 @@ const Dashboard = () => {
         })
       })
 
-  }, [instruments.length])
+  }, [instruments?.length])
 
 
   return (
@@ -63,11 +63,11 @@ const Dashboard = () => {
 
 
       <Tab eventKey="setlist" title="Set list">
-          <UserSetList />
+          <UserSetList userData={userData} />
       </Tab>
 
       <Tab eventKey="Instruments" title="Instruments">
-        <div className='d-flex justify-content-center' >
+        <div className='d-flex align-items-center justify-content-center' >
           <InstruForm userId={userData['@id']} instruPresent={userInstrus} />
         </div>
       </Tab>
