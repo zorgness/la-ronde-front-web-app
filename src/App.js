@@ -19,6 +19,7 @@ import { userProfileFetch, userSetId, userLogout } from '../src/redux/actions/ac
 import SetListIndex from './components/SetListIndex';
 import SetListShow from './components/SetListShow';
 import SongForm from './components/userComponents/SongForm';
+import InstruForm from './components/userComponents/InstruForm';
 
 const  App = ({authData, logout, setId, fetchProfile}) =>  {
 
@@ -53,6 +54,8 @@ const  App = ({authData, logout, setId, fetchProfile}) =>  {
               <Route path='/dashboard' element={<Dashboard  />} />
               <Route path='/set-list-new' element={<UserSetListForm  />} />
               <Route path='/song-new/:id' element={<SongForm  />} />
+              <Route path='/instru-new/:id' element={<InstruForm  />} />
+
             </Route>
 
           </Routes>

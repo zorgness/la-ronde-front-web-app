@@ -46,7 +46,7 @@ const SetListShow = ({authData}) => {
             <p>{city}</p>
         </div>
 
-        <Songs data={data}  />
+        <Songs data={data} userIsOwner={userIsOwner}  />
 
 
     </div>

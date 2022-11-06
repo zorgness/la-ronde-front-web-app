@@ -61,9 +61,9 @@ const InstruForm = ({userId, instruPresent}) => {
       setisPres(list)
     }
 
-
-    isPresent()
-
+    if(instruPresent) {
+      isPresent()
+    }
 
   }, [instruPresent])
 
