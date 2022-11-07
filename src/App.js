@@ -54,8 +54,7 @@ const  App = ({authData, logout, setId, fetchProfile}) =>  {
               <Route path='/dashboard' element={<Dashboard  />} />
               <Route path='/set-list-new' element={<UserSetListForm  />} />
               <Route path='/song-new/:id' element={<SongForm  />} />
-              <Route path='/instru-new/:id' element={<InstruForm  />} />
-
+              <Route path='/instru-new/:id' element={<InstruForm />} />
             </Route>
 
           </Routes>
@@ -74,7 +73,6 @@ const mapStateToProps = (state) => {
   }
 };
 
-
 const mapDispatchToProps = dispatch => {
   return {
     setId: userId => dispatch(userSetId(userId)),
@@ -82,6 +80,5 @@ const mapDispatchToProps = dispatch => {
     logout: () => dispatch(userLogout())
   }
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

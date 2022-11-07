@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { instruments } from '../Data/instruments';
+import { useParams } from 'react-router-dom'
 import { fetchDataWithMethod } from '../../Api/fecthDataWithMethod';
 
 const InstruForm = ({userId, instruPresent}) => {
 
-  const urlMain = process.env.REACT_APP_URL_MAIN
+  const urlMain = process.env.REACT_APP_URL_MAIN;
+
+  const params = useParams();
 
   const type = 'checkbox';
 
@@ -22,6 +25,7 @@ const InstruForm = ({userId, instruPresent}) => {
       tmpSelection.splice(find, 1)
     } else {
       tmpSelection.push(name)
+
     }
     setUserChoices({
       selections: tmpSelection,
@@ -31,13 +35,23 @@ const InstruForm = ({userId, instruPresent}) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    instruPresent.forEach(element => {
-      const options = {}
-      fetchDataWithMethod(urlMain + element['@id'], 'DELETE', options)
-    });
+    if(instruPresent) {
+      instruPresent.forEach(element => {
+        const options = {}
+        fetchDataWithMethod(urlMain + element['@id'], 'DELETE', options)
+      });
+
+    }
+
 
     userChoices.selections.forEach(instrument => {
-      const options = {name: instrument, player: userId}
+      let options = {}
+      if(params.id) {
+        options = {name: instrument, setList: `/api/set_lists/${params.id}`}
+      } else {
+        options = {name: instrument, player: userId}
+      }
+
       fetchDataWithMethod(urlMain + '/api/instruments', 'POST', options)
     })
 
@@ -90,8 +104,6 @@ const InstruForm = ({userId, instruPresent}) => {
                 selected={userChoices.selections.includes(instru.name)}
                 onChange={() => handleCheckBoxChange(instru.name)}
               />
-
-
             )
           })
         }

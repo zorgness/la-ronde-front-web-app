@@ -19,7 +19,10 @@ const UserSetList = ({userData}) => {
       })
     })
 
-  }, [userData.setLists.length])
+  }, [userData?.setLists?.length])
+
+
+  const sortedList = list.sort((a,b) => b?.id - a?.id)
 
   return (
     <div>
@@ -27,7 +30,7 @@ const UserSetList = ({userData}) => {
 
       <Link to={'/set-list-new'}className='btn btn-primary'>Nouvelle Set list</Link>
       {
-        list.map(element => {
+        sortedList.map(element => {
           return (
               <Link to={`/set-list/${element.id}`} key={element.id} >
                 <div className="bg-dark text-white m-5">
