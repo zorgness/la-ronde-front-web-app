@@ -20,14 +20,19 @@ const Dashboard = () => {
 
     const urlMain = process.env.REACT_APP_URL_MAIN
 
-      return(() => {
+      if(instruments) {
 
-        instruments.forEach(instruPath => {
-          fetchData(urlMain + instruPath).then(res => {
-            setUserInstrus(prevState => [...prevState, res])
+        return(() => {
+
+          instruments.forEach(instruPath => {
+            fetchData(urlMain + instruPath).then(res => {
+              setUserInstrus(prevState => [...prevState, res])
+            })
           })
         })
-      })
+
+      }
+
 
   }, [instruments?.length])
 

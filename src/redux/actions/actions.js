@@ -10,7 +10,8 @@ import {
   USER_REGISTER_COMPLETE,
   USER_PROFILE_RECEIVED,
   USER_PROFILE_REQUEST,
-  USER_PROFILE_ERROR
+  USER_PROFILE_ERROR,
+  USER_SET_LIST_RECEIVED
  } from "../constants";
 import { fetchDataWithMethod } from "../../Api/fecthDataWithMethod";
 import { fetchData } from "../../Api/fetchData";
@@ -138,6 +139,13 @@ export const userProfileReceived = (userId, userData) => {
   }
 };
 
+export const userSetListReceived = (data) => {
+  return {
+    type: USER_SET_LIST_RECEIVED,
+    data: data
+  }
+}
+
 export const userProfileFetch = userId => {
   return (dispatch) => {
     dispatch(userProfileRequest());
@@ -153,20 +161,22 @@ export const userEditProfile = (userId, options) => {
   return (dispatch) => {
     return fetchDataWithMethod(userProfileUrl + '/' + userId, 'PUT', options)
     .then(response => {
-      dispatch(userProfileReceived(userId, response))
+      // dispatch(userProfileReceived(userId, response))
+      console.log(response)
     }
   ).catch(() => dispatch(userProfileError(userId)))
 
   }
 }
 
-export const userSetListNew = (userId, options) => {
+export const userSetListNew = (options) => {
   return (dispatch) => {
     return fetchDataWithMethod(userSetList, 'POST', options)
     .then(response => {
-      dispatch(userProfileReceived(userId, response))
+      dispatch(userSetListReceived(response))
+      // console.log(response)
     }
-  ).catch(() => dispatch(userProfileError(userId)))
+  )
   }
 }
 

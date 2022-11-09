@@ -12,7 +12,7 @@ const UserSetList = ({userData}) => {
 
     return(() => {
 
-      userData.setLists.forEach(element => {
+      userData?.setLists?.forEach(element => {
         fetchData(urlMain + element).then(res => {
           setList(prevState => [...prevState, res])
         })

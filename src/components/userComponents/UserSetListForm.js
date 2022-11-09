@@ -36,8 +36,7 @@ const UserSetListForm = ({newSetList}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(state);
-    newSetList(userId, state)
+    newSetList(state)
     navigate('/dashboard')
 
   }
@@ -101,7 +100,7 @@ const UserSetListForm = ({newSetList}) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    newSetList: (userId, options) => dispatch(userSetListNew(userId, options))
+    newSetList: (options) => dispatch(userSetListNew(options))
   }
 }
 
