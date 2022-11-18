@@ -17,7 +17,8 @@ const SetListIndex = () => {
 
     })
 
-  }, [list.length])
+  }, [list?.length])
+
 
   return (
     <div>
@@ -27,19 +28,24 @@ const SetListIndex = () => {
         <Search />
       </div>
 
+      <div className='d-flex justify-content-center gap-5 flex-wrap '>
       {
-        list['hydra:member']?.map(element => {
+        list?.['hydra:member']?.map(element => {
           return (
             <Link to={`/set-list/${element.id}`} key={element.id} >
-              <div className='bg-secondary m-5 text-white'>
-                <p>{element.name}</p>
-                <p>{element.theme}</p>
-                <p>{element.city}</p>
+              <div className="card-product">
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" alt="" />
+                <div className="card-product-infos">
+                  <h2>{element.name}</h2>
+                  <p>{element.theme}</p>
+                  <pre>{element.city}</pre>
+                </div>
               </div>
             </Link>
           )
         })
       }
+      </div>
 
     </div>
   )

@@ -142,7 +142,7 @@ export const userProfileReceived = (userId, userData) => {
 export const userSetListReceived = (data) => {
   return {
     type: USER_SET_LIST_RECEIVED,
-    data: data
+    setListData: data
   }
 }
 
@@ -161,8 +161,8 @@ export const userEditProfile = (userId, options) => {
   return (dispatch) => {
     return fetchDataWithMethod(userProfileUrl + '/' + userId, 'PUT', options)
     .then(response => {
-      // dispatch(userProfileReceived(userId, response))
-      console.log(response)
+      dispatch(userProfileReceived(userId, response))
+
     }
   ).catch(() => dispatch(userProfileError(userId)))
 
@@ -173,8 +173,7 @@ export const userSetListNew = (options) => {
   return (dispatch) => {
     return fetchDataWithMethod(userSetList, 'POST', options)
     .then(response => {
-      dispatch(userSetListReceived(response))
-      // console.log(response)
+      dispatch(userProfileFetch(response.owner.replace(/\D/g, '')))
     }
   )
   }

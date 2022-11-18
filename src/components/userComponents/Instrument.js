@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Instrument = ({instruments}) => {
 
+const Instrument = ({instruments}) => {
 
   function importAll(r) {
     let images = {};
@@ -17,7 +17,7 @@ const Instrument = ({instruments}) => {
 
       <ul className='list-group'>
         {
-          instruments.map(({id, name}) => {
+          instruments?.map(({id, name}) => {
             return (
                 <li key={id} className="list-group-item text-start " style={{border: "none"}}>
                   <img src={images[`${name}.png`]} alt={name} className='avatar-square'/>

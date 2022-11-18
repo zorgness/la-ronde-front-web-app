@@ -1,28 +1,33 @@
 import React, { useState, useEffect } from 'react'
 import {Link} from 'react-router-dom'
 import { fetchData } from '../../Api/fetchData';
+import { connect } from 'react-redux'
 
-const UserSetList = ({userData}) => {
+const UserSetList = ({setListData}) => {
 
-  const urlMain = process.env.REACT_APP_URL_MAIN
+  const [userSetLists, setUserSetList] = useState([])
 
-  const [list, setList] = useState([])
+  // console.log(setListData)
 
   useEffect(() => {
+        const urlMain = process.env.REACT_APP_URL_MAIN
 
-    return(() => {
+        setUserSetList([])
 
-      userData?.setLists?.forEach(element => {
-        fetchData(urlMain + element).then(res => {
-          setList(prevState => [...prevState, res])
+        return(() => {
+
+          setListData?.forEach(element => {
+            fetchData(urlMain + element).then(res => {
+              setUserSetList(prev => [...prev, res])
+
+            })
+          })
         })
-      })
-    })
 
-  }, [userData?.setLists?.length])
+  }, [setListData]);
 
 
-  const sortedList = list.sort((a,b) => b?.id - a?.id)
+  const sortedList = userSetLists?.sort((a,b) => b?.id - a?.id)
 
   return (
     <div>
@@ -40,11 +45,15 @@ const UserSetList = ({userData}) => {
               </Link>
           )
         })
-
       }
-
     </div>
   )
 }
 
-export default UserSetList
+const mapStateToProps = state => {
+  return {
+    setListData: state.auth?.userData?.setLists,
+  }
+}
+
+export default connect(mapStateToProps, null)(UserSetList)

@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { instruments } from '../Data/instruments';
-import { useParams } from 'react-router-dom'
 import { fetchDataWithMethod } from '../../Api/fecthDataWithMethod';
+import { useNavigate } from 'react-router-dom';
 
-const InstruForm = ({userId, instruPresent}) => {
+const InstruForm = ({userId, instruPresent, songId}) => {
 
   const urlMain = process.env.REACT_APP_URL_MAIN;
 
-  const params = useParams();
+  console.log(instruPresent)
+  console.log(songId)
+
+  const navigate = useNavigate()
 
   const type = 'checkbox';
 
@@ -46,8 +49,8 @@ const InstruForm = ({userId, instruPresent}) => {
 
     userChoices.selections.forEach(instrument => {
       let options = {}
-      if(params.id) {
-        options = {name: instrument, setList: `/api/set_lists/${params.id}`}
+      if(songId) {
+        options = {name: instrument, song: `/api/songs/${songId}`}
       } else {
         options = {name: instrument, player: userId}
       }
@@ -57,7 +60,7 @@ const InstruForm = ({userId, instruPresent}) => {
 
     setUserChoices({selections: []})
 
-    alert('Send')
+    navigate('/dashboard')
 
   }
 

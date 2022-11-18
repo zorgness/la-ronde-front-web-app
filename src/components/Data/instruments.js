@@ -1,6 +1,6 @@
 export const instruments = [
-  {id: 1, name: "guitar"},
-  {id: 2,name: "drum"},
+  {id: 1, name: "guitar-lead"},
+  {id: 2, name: "guitar-rythmic"},
   { id: 3, name: "bass" },
   { id: 4, name: "piano" },
   { id: 5, name: "sax" },
@@ -9,4 +9,5 @@ export const instruments = [
   { id: 8, name: "keyboard" },
   { id: 9, name: "percussion" },
   { id: 10, name: "voice" },
+  {id: 11,name: "drum"},
 ];

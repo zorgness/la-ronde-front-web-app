@@ -20,6 +20,7 @@ import SetListIndex from './components/SetListIndex';
 import SetListShow from './components/SetListShow';
 import SongForm from './components/userComponents/SongForm';
 import InstruForm from './components/userComponents/InstruForm';
+import SongShow from './components/SongShow';
 
 const  App = ({authData, logout, setId, fetchProfile}) =>  {
 
@@ -46,6 +47,7 @@ const  App = ({authData, logout, setId, fetchProfile}) =>  {
             <Route path='/' element={<Home />} />
             <Route path="/set-list-index" element={<SetListIndex />} />
             <Route path="/set-list/:id" element={<SetListShow authData={authData}   />} />
+            <Route path="/song/:id" element={<SongShow authData={authData}   />} />
 
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<RegisterContainer isEdit={false} />} />

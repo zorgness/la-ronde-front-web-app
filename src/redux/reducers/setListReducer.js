@@ -1,16 +1,19 @@
 import { USER_SET_LIST_RECEIVED } from "../constants"
 
+const initialState = {
+  setListData: null
+}
 
-const setListReducer = (state, action) => {
+const setListReducer = (state=initialState, action) => {
   switch (action.type) {
     case USER_SET_LIST_RECEIVED:
       return {
         ...state,
-        data: action.data
+        setListData: action.data
       }
 
     default:
-      break;
+      return state
   }
 }
 

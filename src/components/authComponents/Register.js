@@ -14,7 +14,7 @@ const Register = ({register, userData, editProfile, isEdit}) => {
 
   const [state, dispatch] = useReducer(dataSubmitReducer, initialValue);
 
-  const {email, firstName, lastName, username, city, phone, password, verification} = state;
+  const {email, firstName, lastName, username, city, phone, description, password, verification} = state;
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -135,6 +135,24 @@ const Register = ({register, userData, editProfile, isEdit}) => {
             }
            placeholder="" />
         </Form.Group>
+
+        { isEdit &&
+          <Form.Group className="mb-3" controlId="formBasicPhone">
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+           type="text"
+           name="description"
+            defaultValue={description}
+            onChange={e =>
+              dispatch({
+                type: "input",
+                name: e.target.name,
+                value: e.target.value
+              })
+            }
+           placeholder="" />
+          </Form.Group>
+        }
 
 
        {

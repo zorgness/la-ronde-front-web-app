@@ -1,4 +1,4 @@
-import React, {useEffect,  useReducer } from 'react'
+import React, {useState, useEffect,  useReducer } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -10,32 +10,37 @@ import { dataSubmitReducer, initialSetListValue } from '../../redux/reducers/dat
 const UserSetListForm = ({newSetList}) => {
 
   const userData = JSON.parse(localStorage.getItem('userData'));
-  const userId = localStorage.getItem('userId');
 
   const navigate = useNavigate()
 
   const [state, dispatch] = useReducer(dataSubmitReducer, initialSetListValue);
 
+  const [load, setLoad] = useState(true)
+
   const {name, theme, city} = state;
 
   useEffect(() => {
 
-    return(() => {
+  if(load) {
 
+    return(() => {
       dispatch({
         type: 'input',
         name: "owner",
         value: userData['@id']})
-
+        setLoad(false)
     })
-
-  }, [userData['@id'].length])
+   }
+  }, [load, userData])
 
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    dispatch({
+      type: 'input',
+      name: "owner",
+      value: userData['@id']})
     newSetList(state)
     navigate('/dashboard')
 
