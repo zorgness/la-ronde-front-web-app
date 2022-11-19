@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { fetchData } from '../Api/fetchData'
 import { Link } from 'react-router-dom'
 import Songs from './userComponents/Songs'
+import Button from 'react-bootstrap/Button';
 
 
 const SetListShow = ({authData}) => {
@@ -30,33 +31,37 @@ const SetListShow = ({authData}) => {
   const userId = authData.userData?.id
   const userIsOwner = userId === ownerId;
 
+  const handleRequest = () => {
+    alert("votre demande a était envoyée ")
+  }
+
 
   return (
-    <div>
+    <div className='container mt-5'>
 
-      {
-        !userIsOwner && (
-          <div>
-            <Link to="" className="btn btn-info" >Join</Link>
-          </div>
-        )
-      }
+        <div>
+            <h3>{name}</h3>
+            <p>{theme}</p>
+            <p>{city}</p>
+        </div>
 
-      {
+        {
         userIsOwner && (
-          <div>
+          <div className='my-4'>
             <Link to={`/song-new/${id}`} className='btn btn-primary'>
                 Add song
             </Link>
           </div>
         )
-      }
+        }
 
-        <div>
-            <p>{name}</p>
-            <p>{theme}</p>
-            <p>{city}</p>
-        </div>
+        {
+        !userIsOwner && (
+          <div>
+            <Button onClick={handleRequest} className="btn btn-success" >Join</Button>
+          </div>
+        )
+      }
 
 
 

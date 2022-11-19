@@ -3,11 +3,12 @@ import { fetchData } from '../../Api/fetchData'
 import Table from 'react-bootstrap/Table'
 import { Link } from 'react-router-dom'
 
-const SongIndex = ({data}) => {
+const SongIndex = ({data, userIsOwner}) => {
 
   const [songs, setSongs] = useState([])
 
   const urlMain = process.env.REACT_APP_URL_MAIN
+
 
   useEffect(() => {
     data?.songs?.forEach((item) => {

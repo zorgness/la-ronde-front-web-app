@@ -10,8 +10,6 @@ const SetListIndex = () => {
 
   const images = importAll(require.context('./../images/img-music', false, /\.(png|jpe?g|svg)$/));
 
-  console.log(images)
-
   useEffect(() => {
     const urlMain = process.env.REACT_APP_URL_MAIN
     return(() => {
@@ -26,14 +24,14 @@ const SetListIndex = () => {
 
 
   return (
-    <div>
+    <div className='container mt-5'>
       <h2>Set List</h2>
 
       <div className='m-3'>
         <Search />
       </div>
 
-      <div className='d-flex justify-content-center gap-5 flex-wrap '>
+      <div className='d-flex justify-content-center gap-5 flex-wrap mt-5 '>
       {
         list?.['hydra:member']?.map(element => {
           return (

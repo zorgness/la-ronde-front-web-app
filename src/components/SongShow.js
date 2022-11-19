@@ -48,7 +48,7 @@ const SongShow = () => {
 
   return (
 
-    <div>
+    <div className='container mt-5'>
 
       <h1>{name}</h1>
       <pre>{creator}</pre>

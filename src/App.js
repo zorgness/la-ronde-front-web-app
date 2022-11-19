@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootswatch/dist/zephyr/bootstrap.min.css"
 import {
   BrowserRouter,
   Routes,
@@ -47,7 +47,7 @@ const  App = ({authData, logout, setId, fetchProfile}) =>  {
             <Route path='/' element={<Home />} />
             <Route path="/set-list-index" element={<SetListIndex />} />
             <Route path="/set-list/:id" element={<SetListShow authData={authData}   />} />
-            <Route path="/song/:id" element={<SongShow authData={authData}   />} />
+
 
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<RegisterContainer isEdit={false} />} />
@@ -57,6 +57,7 @@ const  App = ({authData, logout, setId, fetchProfile}) =>  {
               <Route path='/set-list-new' element={<UserSetListForm  />} />
               <Route path='/song-new/:id' element={<SongForm  />} />
               <Route path='/instru-new/:id' element={<InstruForm />} />
+              <Route path="/song/:id" element={<SongShow authData={authData}   />} />
             </Route>
 
           </Routes>

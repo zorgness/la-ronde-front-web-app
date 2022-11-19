@@ -15,7 +15,7 @@ const Navigation = ({authData, logout}) => {
 
   return (
 
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="primary" expand="lg" variant="dark">
 
       <Container fluid>
         <Navbar.Brand href="/">LA RONDE</Navbar.Brand>
