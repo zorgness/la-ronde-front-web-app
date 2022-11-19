@@ -1,13 +1,7 @@
 import React from 'react'
-
+import { importAll } from '../../utils/importAll';
 
 const Instrument = ({instruments}) => {
-
-  function importAll(r) {
-    let images = {};
-     r.keys().forEach((item, index) => { images[item.replace('./', '')] = r(item); });
-    return images
-   }
 
    const images = importAll(require.context('../../images/instru_images', false, /\.(png|jpe?g|svg)$/));
 

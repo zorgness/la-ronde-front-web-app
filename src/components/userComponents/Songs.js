@@ -35,7 +35,7 @@ const SongIndex = ({data}) => {
             return (
 
               <tr key={id}>
-                <Link to={`/song/${id}`}><td>{name} <br/> {creator} </td></Link>
+                <td><Link to={`/song/${id}`}>{name} <br/> {creator}</Link> </td>
               </tr>
             )
           })

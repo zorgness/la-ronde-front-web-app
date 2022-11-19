@@ -67,17 +67,21 @@ const UserSetListForm = ({newSetList}) => {
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Theme</Form.Label>
-            <Form.Control
-            type="text"
-            placeholder="theme"
-            autoComplete='false'
+            <Form.Select
             name="theme"
               value={theme}
               onChange={(e) => dispatch({
                 type: 'input',
                 name: e.target.name,
                 value: e.target.value
-              })}   />
+              })}>
+               <option>choisir un théme</option>
+                <option value="variété">variété</option>
+                <option value="rock">rock</option>
+                <option value="jazz">jazz</option>
+                <option value="funk">funk</option>
+                <option value="reggae">reggae</option>
+            </Form.Select>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">

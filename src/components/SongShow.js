@@ -5,6 +5,7 @@ import YoutubeEmbed from '../utils/YoutubeEmbed'
 import SongInstument from '../components/userComponents/SongInstument'
 import ModalInstru from '../components/userComponents/ModalInstru'
 
+
 const SongShow = () => {
 
   const params = useParams()
@@ -56,9 +57,6 @@ const SongShow = () => {
       <p>{tempo} bpm</p>
 
       <div className='m-5'><YoutubeEmbed embedId={link.split('=')[1]}  /></div>
-
-
-
 
       <SongInstument instruments={instruments} />
     </div>
