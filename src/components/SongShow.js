@@ -20,6 +20,8 @@ const SongShow = () => {
     instruments: []
   }
 
+  const userId = localStorage.getItem('userId')
+
   const [data, setData] = useState(initialState)
 
   const [apiSubscribe, setApiSubscribe] = useState(true)
@@ -42,7 +44,7 @@ const SongShow = () => {
 
   console.log(data)
 
-  const {name, creator, link, interpret, tone, tempo, instruments } = data
+  const {id, name, creator, link, interpret, tone, tempo, instruments } = data
 
   return (
 
@@ -55,6 +57,10 @@ const SongShow = () => {
 
       <p>{tone}</p>
       <p>{tempo} bpm</p>
+
+      <div>
+        <ModalInstru songId={id} />
+      </div>
 
       <div className='m-5'><YoutubeEmbed embedId={link.split('=')[1]}  /></div>
 
