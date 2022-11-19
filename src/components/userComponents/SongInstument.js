@@ -53,7 +53,7 @@ const SongInstument = ({instruments}) => {
     : <div><div className="p-1" style={styles[selected]}>Seb </div><div className='mt-3'>{select}</div></div>
   )
 
-  const falseData = [<div className='bg-success p-1'>José</div>, falseUser(isPosted) , <Button>Take post</Button>, <div className='p-1' style={{backgroundColor: 'orange'}}>Denis</div> ]
+  const falseData = [<div className='bg-success p-1'>José</div>, falseUser(isPosted) , <Button>Take post</Button>, <div className='p-1' style={{backgroundColor: 'orange'}}>Denis</div>, <Button>Take post</Button> ]
 
   return (
     <div>
