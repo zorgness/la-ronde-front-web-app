@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { fetchData } from '../../Api/fetchData'
 import InstrumentsContainer from './InstrumentsContainer'
 import Button from 'react-bootstrap/Button';
+import avatar from '../../images/user-avatar.png'
 
 const PublicProfile = () => {
   const params = useParams()
@@ -34,22 +35,40 @@ const PublicProfile = () => {
 
   console.log(musician)
 
-  const {username, description, email, instruments} = musician
+  const {username, description, instruments, city} = musician
 
   return (
-    <div className='container'>
-      <h2>{username}</h2>
-      <p>{email}</p>
-      <div>
-        <p>{description}</p>
-      </div>
+    <div>
+           <div className="card-category" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://img.freepik.com/vecteurs-libre/fond-esthetique-orange-cadre-instrument-musique-dans-vecteur-conception-retro_53876-157650.jpg?w=2000)`}}>
+            <div className="d-flex flex-column">
 
-      <div>
-        <InstrumentsContainer instruments={instruments} />
-      </div>
+              <div className='mb-4'>
+                <img src={avatar} alt="user-avatar" className='avatar-large' />
+              </div>
 
-      <div className='m-5'>
-        <Button>contactez {username}</Button>
+              {username}
+
+            </div>
+        </div>
+
+      <div className="container mt-5">
+
+        <div className='text-end'>
+          <p>{city}</p>
+        </div>
+
+        <div>
+            <h3 className='mb-3'>About me</h3>
+          <p>{description}</p>
+        </div>
+
+        <div>
+          <InstrumentsContainer instruments={instruments} />
+        </div>
+
+        <div className='m-5'>
+          <Button>contactez {username}</Button>
+        </div>
       </div>
 
     </div>

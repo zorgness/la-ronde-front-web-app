@@ -27,16 +27,19 @@ const MusicianIndex = () => {
   console.log(musicians)
 
   return (
-    <div className='container'>
-      <h2>Trouver un musicien</h2>
+    <div className='container mt-5'>
+      <h2 className='mb-5'>Trouver un musicien</h2>
 
       <Search />
 
-      {
-        musicians.map((musician, index) => {
-          return  <Musician key={index} musician={musician} />
-        })
-      }
+      <div className='d-flex flex-wrap justify-content-around mt-5'>
+        {
+          musicians.map((musician, index) => {
+            return  <Musician key={index} musician={musician} />
+          })
+        }
+      </div>
+
 
     </div>
   )

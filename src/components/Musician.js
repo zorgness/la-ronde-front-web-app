@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { fetchData } from '../Api/fetchData'
 import { Link } from 'react-router-dom'
+import avatar from './../images/user-avatar.png'
 
 const Musician = ({musician}) => {
 
@@ -27,18 +28,22 @@ const Musician = ({musician}) => {
 
   return (
     <Link to={`/musician-profile/${musician.id}`}>
-      <div className='m-3'>
-        <p>{musician.username}</p>
-        <p>{musician.city}</p>
-        <ul className="list-group list-group-horizontal">
-          {
-            instruments.map(({id,name}) => {
-              return (
-                <li key={id} className="list-group-item">{name}</li>
-              )
-            })
-          }
-        </ul>
+      <div className='m-3 card-product'>
+      <img src={avatar} alt="" style={{width: "52px", height: '52px'}} className="m-2"/>
+        <div className="card-product-infos">
+          <h3>{musician.username}</h3>
+
+          <div className="d-flex flex-wrap">
+            {
+              instruments.map(({id,name}) => {
+                return (
+                  <pre key={id} className="mx-2 text-dark">{name}</pre>
+                )
+              })
+            }
+          </div>
+          <p className='text-dark'>{musician.city}</p>
+        </div>
       </div>
      </Link>
   )
