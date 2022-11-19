@@ -62,7 +62,7 @@ const SongShow = () => {
         <ModalInstru songId={id} />
       </div>
 
-      <div className='m-5'><YoutubeEmbed embedId={link.split('=')[1]}  /></div>
+      <div style={{marginLeft: "52px"}} className="my-5"><YoutubeEmbed embedId={link.split('=')[1]}  /></div>
 
       <SongInstument instruments={instruments} />
     </div>

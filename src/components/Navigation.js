@@ -28,7 +28,8 @@ const Navigation = ({authData, logout}) => {
         <Nav className="text-center" >
           <Nav.Link href="/" className='mx-5'>Acceuil</Nav.Link>
 
-          <Nav.Link href="/set-list-index" className='mx-5'>Set</Nav.Link>
+          <Nav.Link href="/set-list-index" className='mx-5'>Set List</Nav.Link>
+          <Nav.Link href="/musician-index" className='mx-5'>Musiciens</Nav.Link>
 
         {
           authData.isAuthenticated

@@ -9,9 +9,6 @@ const InstruForm = ({userId, instruPresent, songId}) => {
 
   const urlMain = process.env.REACT_APP_URL_MAIN;
 
-  console.log(instruPresent)
-  console.log(songId)
-
   const navigate = useNavigate()
 
   const type = 'checkbox';

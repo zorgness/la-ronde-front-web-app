@@ -9,11 +9,11 @@ const Home = () => {
 
       <figure className='m-3'>
         <blockquote className="blockquote">
-          <p className="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <p className="mb-0">La musique est l'expression parfaite d'un monde idéal qui s'exprimerait à nous par le moyen de l'harmonie.</p>
 
         </blockquote>
-        <figcaption className="blockquote-footer">
-          Someone famous in <cite title="Source Title">Source Title</cite>
+        <figcaption className="blockquote-footer m-3">
+          <cite title="Source Title">Albert Camus</cite>
         </figcaption>
       </figure>
     </div>

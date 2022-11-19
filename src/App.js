@@ -21,6 +21,8 @@ import SetListShow from './components/SetListShow';
 import SongForm from './components/userComponents/SongForm';
 import InstruForm from './components/userComponents/InstruForm';
 import SongShow from './components/SongShow';
+import MusicianIndex from './components/MusicianIndex';
+import PublicProfile from './components/userComponents/PublicProfile';
 
 const  App = ({authData, logout, setId, fetchProfile}) =>  {
 
@@ -47,6 +49,8 @@ const  App = ({authData, logout, setId, fetchProfile}) =>  {
             <Route path='/' element={<Home />} />
             <Route path="/set-list-index" element={<SetListIndex />} />
             <Route path="/set-list/:id" element={<SetListShow authData={authData}   />} />
+            <Route path="/musician-index" element={<MusicianIndex authData={authData}   />} />
+            <Route path="/musician-profile/:id" element={<PublicProfile authData={authData}   />} />
 
 
             <Route path='/login' element={<Login />} />
