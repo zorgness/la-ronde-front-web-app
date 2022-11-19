@@ -45,7 +45,7 @@ const SongInstument = ({instruments}) => {
     setIsPosted(true)
   }
 
-  const styles = [{}, {backgroundColor: "orange"}, {backgroundColor: "green"}]
+  const styles = [{}, {backgroundColor: "orange"}, {backgroundColor: "#22D287"}]
 
   const falseUser = (isPosted) => (
     !isPosted
@@ -53,7 +53,7 @@ const SongInstument = ({instruments}) => {
     : <div><div className="p-1" style={styles[selected]}>Seb </div><div className='mt-3'>{select}</div></div>
   )
 
-  const falseData = [<div className='bg-success p-1'>José</div>, falseUser(isPosted) , <Button>Take post</Button>, <div className='p-1' style={{backgroundColor: 'orange'}}>Denis</div>, <Button>Take post</Button> ]
+  const falseData = [<div className='p-1' style={{backgroundColor: '#22D287'}}>José</div>, falseUser(isPosted) , <Button>Take post</Button>, <div className='p-1' style={{backgroundColor: 'orange'}}>Denis</div>, <Button>Take post</Button> ]
 
   return (
     <div>
