@@ -34,7 +34,11 @@ const SongIndex = ({data, userIsOwner}) => {
             return (
 
               <tr key={id}>
-                <td><Link to={`/song/${id}`}>{name} <br/> {creator}</Link> </td>
+                <td>
+                <Link
+                 to={`/song/${id}`}
+                 state={{ userIsOwner: userIsOwner}}
+                >{name} <br/> {creator}</Link> </td>
               </tr>
             )
           })

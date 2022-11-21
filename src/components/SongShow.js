@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import { fetchData } from './../Api/fetchData'
 import YoutubeEmbed from '../utils/YoutubeEmbed'
 import SongInstument from '../components/userComponents/SongInstument'
@@ -20,11 +20,16 @@ const SongShow = () => {
     instruments: []
   }
 
-  const userId = localStorage.getItem('userId')
+
+  const location = useLocation()
+
+  const {userIsOwner} = location.state
 
   const [data, setData] = useState(initialState)
 
   const [apiSubscribe, setApiSubscribe] = useState(true)
+
+  console.log(userIsOwner)
 
   useEffect(() =>{
 
@@ -59,6 +64,8 @@ const SongShow = () => {
       <p>{tempo} bpm</p>
 
       {
+        userIsOwner
+        ?
         instruments.length < 1
         ?
          <div>
@@ -66,15 +73,17 @@ const SongShow = () => {
          </div>
         :
         <div>
-            {/* <ModalInstru songId={id} /> */}
             <button className='btn btn-warning'>Edit</button>
         </div>
+        :
+        null
       }
 
 
       <div style={{marginLeft: "52px"}} className="my-5"><YoutubeEmbed embedId={link.split('=')[1]}  /></div>
 
-      <SongInstument instruments={instruments} />
+        <SongInstument instruments={instruments} />
+
     </div>
   )
 }

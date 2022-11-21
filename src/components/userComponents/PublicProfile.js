@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import avatar from '../../images/user-avatar.png'
 import { Link } from 'react-router-dom'
 import arrow from '../../images/arrow.png'
+import ContactModal from './ContactModal';
 
 const PublicProfile = () => {
   const params = useParams()
@@ -82,7 +83,7 @@ const PublicProfile = () => {
         </div>
 
         <div className='m-5'>
-          <Button>contactez {username}</Button>
+          <ContactModal  name={username}/>
         </div>
 
         <div>
