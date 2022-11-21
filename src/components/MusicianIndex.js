@@ -2,10 +2,12 @@ import React, {useState, useEffect} from 'react'
 import { fetchData } from './../Api/fetchData'
 import Musician from './Musician'
 import Search from './Search'
+import Loader from './Loader'
 
 const MusicianIndex = () => {
 
   const [musicians, setMusicians] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() =>{
 
@@ -15,9 +17,9 @@ const MusicianIndex = () => {
         fetchData(urlMain + '/api/users')
         .then(res => {
           setMusicians(res?.["hydra:member"])
+          setLoading(false)
         })
       })
-
   }, [])
 
   console.log(musicians)
@@ -27,6 +29,10 @@ const MusicianIndex = () => {
       <h2 className='mb-5'>Trouver un musicien</h2>
 
       <Search />
+
+      {
+        loading && <Loader />
+      }
 
       <div className='d-flex flex-wrap justify-content-around mt-5'>
         {

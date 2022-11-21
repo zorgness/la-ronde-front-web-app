@@ -3,10 +3,12 @@ import Search from './Search'
 import { fetchData } from '../Api/fetchData'
 import { Link } from 'react-router-dom'
 import { importAll } from './../utils/importAll';
+import Loader from './Loader';
 
 const SetListIndex = () => {
 
   const [list, setList] = useState([])
+  const [loading, setLoading] = useState(true)
 
   const images = importAll(require.context('./../images/img-music', false, /\.(png|jpe?g|svg)$/));
 
@@ -16,6 +18,7 @@ const SetListIndex = () => {
 
         fetchData(urlMain + '/api/set_lists').then(res => {
           setList(res)
+          setLoading(false)
         })
 
     })
@@ -30,6 +33,10 @@ const SetListIndex = () => {
       <div className='m-3'>
         <Search />
       </div>
+
+      {
+        loading && <Loader />
+      }
 
       <div className='d-flex justify-content-center gap-5 flex-wrap mt-5 '>
       {
