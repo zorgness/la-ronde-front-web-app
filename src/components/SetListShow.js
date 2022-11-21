@@ -43,7 +43,7 @@ const SetListShow = ({authData}) => {
   return (
     <div className='container mt-5'>
 
-      <Link to={`/musician-profile/${userId}`} ><h3>{username}</h3></Link>
+      <Link to={`/musician-profile/${userId}`} ><h3 className='text-start'>{username}</h3></Link>
 
 
         <div>
