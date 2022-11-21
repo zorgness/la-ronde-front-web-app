@@ -56,10 +56,10 @@ const InstruForm = ({userId, instruPresent, songId}) => {
     })
 
     setUserChoices({selections: []})
-
+    window.location.reload()
     navigate('/dashboard')
-
   }
+
 
 
   useEffect(() => {

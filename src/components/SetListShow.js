@@ -4,7 +4,10 @@ import { fetchData } from '../Api/fetchData'
 import { Link } from 'react-router-dom'
 import Songs from './userComponents/Songs'
 import Button from 'react-bootstrap/Button';
-
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+import AboutSetList from './AboutSetList'
+import Event from './Event'
 
 const SetListShow = ({authData}) => {
 
@@ -29,6 +32,7 @@ const SetListShow = ({authData}) => {
   const regex = /\d+/g;
   const ownerId =  parseInt(data?.owner?.match(regex)[0])
   const userId = authData.userData?.id
+  const username = authData.userData?.username
   const userIsOwner = userId === ownerId;
 
   const handleRequest = () => {
@@ -39,33 +43,53 @@ const SetListShow = ({authData}) => {
   return (
     <div className='container mt-5'>
 
+      <Link to={`/musician-profile/${userId}`} ><h3>{username}</h3></Link>
+
+
         <div>
             <h3>{name}</h3>
             <p>{theme}</p>
             <p>{city}</p>
         </div>
 
-        {
-        userIsOwner && (
-          <div className='my-4'>
-            <Link to={`/song-new/${id}`} className='btn btn-primary'>
-                Add song
-            </Link>
-          </div>
-        )
-        }
+        <Tabs
+          defaultActiveKey="about"
+          id="uncontrolled-tab-example"
+          className="mb-3 d-flex "
+          fill
+        >
+        <Tab eventKey="about" title="about">
+          <AboutSetList />
+        </Tab>
 
-        {
-        !userIsOwner && (
-          <div>
-            <Button onClick={handleRequest} className="btn btn-success" >Join</Button>
-          </div>
-        )
-      }
+        <Tab eventKey="songs" title="songs">
+            {
+            userIsOwner && (
+              <div className='my-4'>
+                <Link to={`/song-new/${id}`} className='btn btn-primary'>
+                    Add song
+                </Link>
+              </div>
+            )
+            }
+
+            {
+            !userIsOwner && (
+              <div>
+                <Button onClick={handleRequest} className="btn btn-success" >Join</Button>
+              </div>
+            )
+          }
+            <Songs data={data} userIsOwner={userIsOwner}  />
+
+        </Tab>
+
+        <Tab eventKey="events" title="events">
+            <Event />
+        </Tab>
+    </Tabs>
 
 
-
-        <Songs data={data} userIsOwner={userIsOwner}  />
 
 
     </div>

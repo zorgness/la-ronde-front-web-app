@@ -24,8 +24,6 @@ const InstrumentsContainer = ({instruments}) => {
 
   }, [instruments.length, apiSubscribe])
 
-  console.log(list)
-
   return (
     <>
       <Instrument instruments={list} />

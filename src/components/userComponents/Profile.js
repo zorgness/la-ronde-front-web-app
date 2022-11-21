@@ -13,7 +13,7 @@ const Profile = ({userData, userInstrus}) => {
 
   return (
 
-      <div>
+      <div id="profile" >
         <p className='text-end mx-3'>{userData.city}</p>
         <h3 className='text-start mx-5'>Mes Instruments</h3>
 

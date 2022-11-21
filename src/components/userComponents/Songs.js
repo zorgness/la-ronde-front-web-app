@@ -7,19 +7,17 @@ const SongIndex = ({data, userIsOwner}) => {
 
   const [songs, setSongs] = useState([])
 
-  const urlMain = process.env.REACT_APP_URL_MAIN
-
 
   useEffect(() => {
+    const urlMain = process.env.REACT_APP_URL_MAIN
     data?.songs?.forEach((item) => {
       fetchData(urlMain + item)
       .then(res => {
         setSongs(prevState => [...prevState, res])
       })
     })
-  }, [data?.songs?.length, urlMain])
+  }, [data?.songs?.length])
 
-   console.log(songs)
 
   return (
     <div className='m-3'>

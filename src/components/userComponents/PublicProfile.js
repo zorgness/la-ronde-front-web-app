@@ -33,7 +33,6 @@ const PublicProfile = () => {
     }
   })
 
-  console.log(musician)
 
   const {username, description, instruments, city} = musician
 

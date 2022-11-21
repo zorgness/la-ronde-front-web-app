@@ -42,13 +42,13 @@ const SongShow = () => {
 
   }, [data, params.id, apiSubscribe])
 
-  console.log(data)
-
   const {id, name, creator, link, interpret, tone, tempo, instruments } = data
 
   return (
 
     <div className='container mt-5'>
+
+
 
       <h1>{name}</h1>
       <pre>{creator}</pre>
@@ -58,9 +58,19 @@ const SongShow = () => {
       <p>{tone}</p>
       <p>{tempo} bpm</p>
 
-      <div>
-        <ModalInstru songId={id} />
-      </div>
+      {
+        instruments.length < 1
+        ?
+         <div>
+            <ModalInstru songId={id} />
+         </div>
+        :
+        <div>
+            {/* <ModalInstru songId={id} /> */}
+            <button className='btn btn-warning'>Edit</button>
+        </div>
+      }
+
 
       <div style={{marginLeft: "52px"}} className="my-5"><YoutubeEmbed embedId={link.split('=')[1]}  /></div>
 

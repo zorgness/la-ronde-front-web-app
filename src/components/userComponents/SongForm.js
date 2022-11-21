@@ -36,7 +36,7 @@ const SongForm = ({newSong}) => {
 
     console.log(state);
     newSong(state)
-    navigate('/dashboard')
+    navigate(`/set-list/${params.id}`)
 
   }
 

@@ -6,23 +6,19 @@ import Search from './Search'
 const MusicianIndex = () => {
 
   const [musicians, setMusicians] = useState([])
-  const [apiSubscribe, setApiSubscribe] = useState(true)
 
   useEffect(() =>{
 
     const urlMain = process.env.REACT_APP_URL_MAIN
 
-    if(apiSubscribe) {
       return(() => {
         fetchData(urlMain + '/api/users')
         .then(res => {
           setMusicians(res?.["hydra:member"])
-          setApiSubscribe(false)
         })
       })
-    }
 
-  }, [apiSubscribe])
+  }, [])
 
   console.log(musicians)
 
