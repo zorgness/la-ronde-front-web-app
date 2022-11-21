@@ -8,6 +8,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import AboutSetList from './AboutSetList'
 import Event from './Event'
+import avatar from './../images/user-avatar.png'
 
 const SetListShow = ({authData}) => {
 
@@ -16,10 +17,14 @@ const SetListShow = ({authData}) => {
   const urlMain = process.env.REACT_APP_URL_MAIN
 
   const [data, setData] = useState([])
-
-  // const [listInstruments, setListInstruments] = useState([])
+  const [owner, setOwner] = useState([])
 
   const {id, name, theme, city } = data
+
+  const regex = /\d+/g;
+  const ownerId =  parseInt(data?.owner?.match(regex)[0])
+  const userId = authData.userData?.id
+  const userIsOwner = userId === ownerId;
 
   useEffect(() => {
     fetchData(urlMain + '/api/set_lists/' + params.id)
@@ -28,22 +33,27 @@ const SetListShow = ({authData}) => {
     })
   }, [params.length])
 
+  useEffect(() => {
+      fetchData(urlMain + data?.owner)
+      .then(res => {
+        setOwner(res)
+      })
+  }, [data?.owner])
 
-  const regex = /\d+/g;
-  const ownerId =  parseInt(data?.owner?.match(regex)[0])
-  const userId = authData.userData?.id
-  const username = authData.userData?.username
-  const userIsOwner = userId === ownerId;
 
   const handleRequest = () => {
     alert("votre demande a était envoyée ")
   }
 
-
   return (
     <div className='container mt-5'>
 
-      <Link to={`/musician-profile/${userId}`} ><h3 className='text-start'>{username}</h3></Link>
+      <Link to={`/musician-profile/${ownerId}`} >
+        <div className='mb-3'>
+          <img src={avatar} className="avatar" alt="" />
+          <h3 >{owner?.username}</h3>
+        </div>
+      </Link>
 
 
         <div>
@@ -51,6 +61,7 @@ const SetListShow = ({authData}) => {
             <p>{theme}</p>
             <p>{city}</p>
         </div>
+
 
         <Tabs
           defaultActiveKey="about"
@@ -60,6 +71,14 @@ const SetListShow = ({authData}) => {
         >
         <Tab eventKey="about" title="about">
           <AboutSetList />
+
+          {
+            !userIsOwner && (
+              <div>
+                <Button onClick={handleRequest} className="btn btn-success" >Join</Button>
+              </div>
+            )
+          }
         </Tab>
 
         <Tab eventKey="songs" title="songs">
@@ -73,18 +92,21 @@ const SetListShow = ({authData}) => {
             )
             }
 
-            {
-            !userIsOwner && (
-              <div>
-                <Button onClick={handleRequest} className="btn btn-success" >Join</Button>
-              </div>
-            )
-          }
+
             <Songs data={data} userIsOwner={userIsOwner}  />
 
         </Tab>
 
         <Tab eventKey="events" title="events">
+          {
+            userIsOwner && (
+              <div className='my-4'>
+                <Link to={"/"} className='btn btn-info'>
+                    new event
+                </Link>
+              </div>
+            )
+            }
             <Event />
         </Tab>
     </Tabs>

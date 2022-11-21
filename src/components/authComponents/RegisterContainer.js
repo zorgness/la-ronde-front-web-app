@@ -24,7 +24,7 @@ const RegisterContainer = ({registerData, complete}) => {
 
     if(counter < 0) {
       complete()
-      navigate('/')
+      navigate('/login')
     }
 
   }, [counter, registrationSuccess, confirmationSuccess, navigate, complete])

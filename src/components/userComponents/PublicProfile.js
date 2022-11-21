@@ -4,6 +4,8 @@ import { fetchData } from '../../Api/fetchData'
 import InstrumentsContainer from './InstrumentsContainer'
 import Button from 'react-bootstrap/Button';
 import avatar from '../../images/user-avatar.png'
+import { Link } from 'react-router-dom'
+import arrow from '../../images/arrow.png'
 
 const PublicProfile = () => {
   const params = useParams()
@@ -12,10 +14,12 @@ const PublicProfile = () => {
     username: "",
     description: "",
     email: "",
-    instruments: []
+    instruments: [],
+    setList: []
   }
 
   const [musician, setMusican] = useState(initialState)
+  const [list, setList] = useState([])
   const [apiSubscribe, setApiSubscribe] = useState(true)
 
   useEffect(() => {
@@ -33,8 +37,20 @@ const PublicProfile = () => {
     }
   })
 
+  const {username, description, instruments, setLists, city} = musician
 
-  const {username, description, instruments, city} = musician
+  useEffect(() => {
+    const urlMain = process.env.REACT_APP_URL_MAIN
+
+        setLists?.forEach(element => {
+        fetchData(urlMain + element ).then(res => {
+          setList(prevState => [...prevState, res])
+        })
+      })
+
+  }, [setLists?.length])
+
+  console.log(list)
 
   return (
     <div>
@@ -68,6 +84,21 @@ const PublicProfile = () => {
         <div className='m-5'>
           <Button>contactez {username}</Button>
         </div>
+
+        <div>
+          <ul className='list-group'>
+            {
+              list.map(({id,name, theme}) => {
+                return <Link key={id} to={`/set-list/${id}`}>
+                <li className="text-start list-group-item">
+                <img src={arrow} alt="user-avatar" className='avatar mx-2' />
+                {name} {theme}</li></Link>
+              })
+            }
+          </ul>
+        </div>
+
+
       </div>
 
     </div>
