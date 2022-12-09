@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "La Ronde",
+  "name": "application de mise en relation des musiciens amateurs",
   "icons": [
     {
       "src": "favicon.ico",

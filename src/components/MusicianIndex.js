@@ -19,8 +19,6 @@ const MusicianIndex = () => {
     };
   }, []);
 
-  console.log(musicians);
-
   return (
     <div className="container mt-5">
       <h2 className="mb-5">Trouver un musicien</h2>
