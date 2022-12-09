@@ -78,6 +78,17 @@ const PublicProfile = () => {
           <p>{description}</p>
         </div>
 
+        <hr />
+
+        <div>
+          <h3 className="mb-3">Styles</h3>
+          <ul className="list-group">
+            <li className="list-group-item">Rock</li>
+            <li className="list-group-item">Jazz</li>
+            <li className="list-group-item">Funk</li>
+          </ul>
+        </div>
+
         <div>
           <InstrumentsContainer instruments={instruments} />
         </div>

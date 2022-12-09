@@ -5,7 +5,7 @@ const DisponibiltyContainer = ({ userDisponibility }) => {
   return (
     <div className="mt-3">
       <h2>Availablity</h2>
-      <ul>
+      <ul className="list-group">
         {userDisponibility.map((disponibility) => {
           return (
             <DisponibilityComponent

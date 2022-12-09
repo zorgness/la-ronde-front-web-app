@@ -26,19 +26,17 @@ const MusicianIndex = () => {
       <Search />
 
       <h6 className="text-center mt-3">Filter</h6>
-      <div className="d-flex justify-content-around flex-wrap">
+      <div className="d-flex justify-content-around flex-wrap gap-3">
         <div>
-          <button className="btn btn-primary" style={{ borderRadius: "40px" }}>
-            Style
-          </button>
+          <button className="btn btn-outline-primary btn-filter">Style</button>
         </div>
         <div>
-          <button className="btn btn-dark" style={{ borderRadius: "40px" }}>
+          <button className="btn btn-outline-dark btn-filter">
             Instruments
           </button>
         </div>
         <div>
-          <button className="btn btn-warning" style={{ borderRadius: "40px" }}>
+          <button className="btn btn-outline-warning btn-filter">
             Location
           </button>
         </div>

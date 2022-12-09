@@ -3,6 +3,7 @@
 @import url("styles/youtube.css");
 @import url("styles/rating.css");
 @import url("styles/likedislike.css");
+@import url("styles/filter.css");
 
 .App {
   text-align: center;

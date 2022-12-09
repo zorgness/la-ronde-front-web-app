@@ -1,7 +1,11 @@
 import React from "react";
 
 const DisponibilityComponent = ({ disponibility }) => {
-  return <li>{disponibility.date.toISOString().split("T")[0]}</li>;
+  return (
+    <li className="list-group-item">
+      {disponibility.date.toISOString().split("T")[0]}{" "}
+    </li>
+  );
 };
 
 export default DisponibilityComponent;
