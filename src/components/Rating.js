@@ -1,14 +1,13 @@
-import React from 'react'
+import React from "react";
 
-const Rating = ({rating}) => {
-  console.log(rating)
-  const score = (rating / 5) * 100
+const Rating = ({ rating }) => {
+  const score = (rating / 5) * 100;
 
   return (
     <span className="star-wrapper">
       <span className="stars" style={{ width: score + "%" }}></span>
     </span>
-  )
-}
+  );
+};
 
-export default Rating
+export default Rating;
