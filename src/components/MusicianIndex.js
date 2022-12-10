@@ -45,7 +45,7 @@ const MusicianIndex = () => {
       {loading && <Loader />}
 
       <div className="d-flex flex-wrap justify-content-around mt-5">
-        {musicians.map((musician, index) => {
+        {musicians?.map((musician, index) => {
           return <Musician key={index} musician={musician} />;
         })}
       </div>

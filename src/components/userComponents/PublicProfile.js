@@ -56,7 +56,7 @@ const PublicProfile = () => {
       <div
         className="card-category"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://img.freepik.com/vecteurs-libre/fond-esthetique-orange-cadre-instrument-musique-dans-vecteur-conception-retro_53876-157650.jpg?w=2000)`,
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/random/?band)`,
         }}
       >
         <div className="d-flex flex-column">

@@ -6,15 +6,14 @@ import Geolocation from "../images/geolocation.png";
 const Home = () => {
   return (
     <div className="mt-5">
+      <img src={Logo} alt="logo" border="0" className="avatar-logo" />
       <div className="m-3">
-        <Search />
         <pre className="p-3">
           <img src={Geolocation} alt="" className="avatar-small mx-2" />
           entrez votre code postal
         </pre>
+        <Search />
       </div>
-
-      <img src={Logo} alt="logo" border="0" className="img-fluid" />
 
       <figure className="m-3">
         <blockquote className="blockquote">
