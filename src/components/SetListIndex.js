@@ -25,7 +25,7 @@ const SetListIndex = () => {
 
   return (
     <div className="container mt-5">
-      <h2>Set List</h2>
+      <h2>PlayList</h2>
 
       <div className="m-3">
         <Search />
@@ -35,6 +35,9 @@ const SetListIndex = () => {
       <div className="d-flex justify-content-around flex-wrap gap-3">
         <div>
           <button className="btn btn-outline-primary btn-filter">Style</button>
+        </div>
+        <div>
+          <button className="btn btn-outline-success btn-filter">Song</button>
         </div>
         <div>
           <button className="btn btn-outline-dark btn-filter">

@@ -24,7 +24,7 @@ const Navigation = ({ authData, logout }) => {
             </Nav.Link>
 
             <Nav.Link href="/set-list-index" className="mx-5">
-              SetList
+              PlayList
             </Nav.Link>
             <Nav.Link href="/musician-index" className="mx-5">
               Musiciens
